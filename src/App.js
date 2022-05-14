@@ -1,12 +1,14 @@
-import './App.css'
+import React, { useState } from "react";
+import "./App.css";
+import Modal from "./components/Modal";
 
 function App({ domElement }) {
-  const entropay = domElement.getAttribute('data-entropay')
+  const entropay = domElement.getAttribute("data-entropay");
   return (
     <div className="App">
-      <h1>Entropay{entropay}</h1>
+      <Modal />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

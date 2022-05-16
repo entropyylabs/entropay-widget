@@ -35,6 +35,7 @@ function Modal({ entropay }) {
         >
           close modal
         </button>
+        <div id="rapyd-checkout"></div>
       </Overlay>
     </div>
   );

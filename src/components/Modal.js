@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import Overlay from "react-overlay-component";
 import CheckoutToolkit from "../services/CheckoutToolkit";
 
-function Modal({ entropay }) {
+import { useButtonConfig } from "../context/ButtonConfigProvider";
+
+function Modal({ buttonID }) {
   const [isOpen, setOverlay] = useState(false);
-  const [checkoutPage_id, setCheckoutPage_id] = useState(
-    "checkout_33cc0f41e8239e5c259e3e02496c2f5f"
-  );
 
   const closeOverlay = () => setOverlay(false);
+
+  const { pageID } = useButtonConfig();
+
+  console.log(pageID);
 
   const configs = {
     animate: true,
@@ -17,39 +20,19 @@ function Modal({ entropay }) {
     // focusOutline: false,
   };
 
-  useEffect(() => {
-    callRestApi();
-  }, []);
-
-  const restEndpoint = "http://localhost:5000/checkout";
-
-  const callRestApi = async () => {
-    const response = await fetch(restEndpoint, {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ amount: 155 }),
-    });
-    const jsonResponse = await response.json();
-    setCheckoutPage_id(jsonResponse.body.data.id);
-  };
-
-  console.log(checkoutPage_id);
   return (
     <div>
-      <CheckoutToolkit checkout_id={checkoutPage_id} />
+      <CheckoutToolkit buttonID={buttonID} />
       <button
         onClick={() => {
           setOverlay(true);
         }}
       >
-        Entropay{entropay}
+        Entropay
       </button>
       <Overlay configs={configs} isOpen={isOpen} closeOverlay={closeOverlay}>
-        <h2>Sample header</h2>
-        <p>text content</p>
+        <h2>Checkout powered by Entropay</h2>
+        <p>Enter details </p>
 
         <button
           className="danger"

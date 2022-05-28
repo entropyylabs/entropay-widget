@@ -30,7 +30,7 @@ function Modal({ buttonID }) {
           setOverlay(true);
         }}
       >
-        <img src={logo} alt="" srcset="" />
+        <img src="https://i.ibb.co/xjfjQ1q/Group-1.png" alt="" srcset="" />
         Entropay
       </button>
       <Overlay configs={configs} isOpen={isOpen} closeOverlay={closeOverlay}>

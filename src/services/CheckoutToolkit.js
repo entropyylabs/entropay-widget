@@ -12,7 +12,7 @@ function CheckoutToolkit({ buttonID }) {
       <script>
         {`console.log('hello')
         console.log("${pageID}")
-            const Endpoint = "http://localhost:5000/get-checkout/${buttonID}"
+            const Endpoint = "https://entropay-backend.herokuapp.com/get-checkout/${buttonID}"
             const callRestApi = async () => {
     const response = await fetch(Endpoint, {
       method: "GET",

@@ -3,6 +3,7 @@ import Overlay from "react-overlay-component";
 import CheckoutToolkit from "../services/CheckoutToolkit";
 
 import { useButtonConfig } from "../context/ButtonConfigProvider";
+import logo from "../assets/logo.svg";
 
 function Modal({ buttonID }) {
   const [isOpen, setOverlay] = useState(false);
@@ -24,10 +25,12 @@ function Modal({ buttonID }) {
     <div>
       <CheckoutToolkit buttonID={buttonID} />
       <button
+        id="entropay-button"
         onClick={() => {
           setOverlay(true);
         }}
       >
+        <img src={logo} alt="" srcset="" />
         Entropay
       </button>
       <Overlay configs={configs} isOpen={isOpen} closeOverlay={closeOverlay}>

@@ -4,7 +4,7 @@ const ButtonConfigContext = createContext();
 
 export function ButtonConfigProvider({ children, buttonID }) {
   const [pageID, setPageID] = useState();
-  const restEndpoint = `http://localhost:5000/get-checkout/${buttonID}`;
+  const restEndpoint = `https://entropay-backend.herokuapp.com/get-checkout/${buttonID}`;
 
   const callRestApi = async () => {
     const response = await fetch(restEndpoint, {

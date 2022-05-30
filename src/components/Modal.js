@@ -3,7 +3,8 @@ import Overlay from "react-overlay-component";
 import CheckoutToolkit from "../services/CheckoutToolkit";
 
 import { useButtonConfig } from "../context/ButtonConfigProvider";
-import logo from "../assets/logo.svg";
+import DetailsCard from "./DetailsCard";
+import PaymentCard from "./PaymentCard";
 
 function Modal({ buttonID }) {
   const [isOpen, setOverlay] = useState(false);
@@ -12,13 +13,10 @@ function Modal({ buttonID }) {
 
   const { pageID } = useButtonConfig();
 
-  console.log(pageID);
-
   const configs = {
     animate: true,
     clickDismiss: false,
-    // escapeDismiss: false,
-    // focusOutline: false,
+    contentClass: "overlay-content",
   };
 
   return (
@@ -30,22 +28,18 @@ function Modal({ buttonID }) {
           setOverlay(true);
         }}
       >
-        <img src="https://i.ibb.co/xjfjQ1q/Group-1.png" alt="" srcset="" />
-        Entropay
+        <img src="https://i.ibb.co/DtgBm1x/Group-5.png" alt="" srcset="" />
+        Pay Now
       </button>
       <Overlay configs={configs} isOpen={isOpen} closeOverlay={closeOverlay}>
-        <h2>Checkout powered by Entropay</h2>
-        <p>Enter details </p>
-
-        <button
-          className="danger"
-          onClick={() => {
-            setOverlay(false);
-          }}
-        >
-          close modal
-        </button>
-        <div id="rapyd-checkout"></div>
+        <div className="logo-modal">
+          <img src="https://i.ibb.co/nD3sPDy/logo.png" alt="" srcset="" />
+          <h1>Entropay</h1>
+        </div>
+        <div className="modal-content">
+          <DetailsCard />
+          <PaymentCard />
+        </div>
       </Overlay>
     </div>
   );
